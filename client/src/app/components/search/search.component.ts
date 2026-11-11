@@ -24,7 +24,10 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    var results = this.spotifyService.searchFor(this.searchCategory, this.searchString);
+    var trimmed = this.searchString.trim();
+    if (this.searchString) {
+      this.spotifyService.searchFor(this.searchCategory, trimmed).then(data => this.resources = data);
+    }
   }
 
 }
