@@ -4,7 +4,9 @@
     <!--TODO: edit @for to populate carousel with carousel-card components.-->
     <!--carousel-card can bind a single resource as an Input.-->
     <!--"let first=$first" sets the "first" variable to be true for the first card in the carousel. The [ngClass] assigns the active property to it-->
-    <!--https://angular.dev/api/core/@for-->
+    <!--https://angular.dev/api/core/@for
+    i think i got it. this link is so beautiful
+    -->
     @for(resource of resources; track resource.id; let first=$first) {
       <app-carousel-card class="carousel-item" [ngClass]="first" [resource] = "resource"></app-carousel-card>
     }

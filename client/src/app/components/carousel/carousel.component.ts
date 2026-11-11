@@ -8,8 +8,9 @@ import { ResourceData } from '../../data/resource-data';
     standalone: false
 })
 export class CarouselComponent implements OnInit {
-	@Input() carouselId:string;
-	@Input() resources:ResourceData[];
+  //why does it always throw errors unless i assign them null values what is this
+	@Input() carouselId:string = "";
+	@Input() resources:ResourceData[] = [];
 
   constructor() { }
 

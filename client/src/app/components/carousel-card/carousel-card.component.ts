@@ -8,6 +8,7 @@ import { ResourceData } from '../../data/resource-data';
     standalone: false
 })
 export class CarouselCardComponent implements OnInit {
+  //dawg why does this throw an error too
   @Input() resource:ResourceData;
 
   constructor() { }

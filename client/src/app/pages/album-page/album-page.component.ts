@@ -12,15 +12,15 @@ import { SpotifyService } from '../../services/spotify.service';
     standalone: false
 })
 export class AlbumPageComponent implements OnInit {
-	albumId:string;
-	album:AlbumData;
-	tracks:TrackData[];
+	albumId:string = "";
+	album:AlbumData = new AlbumData("");
+	tracks:TrackData[] = [];
 
 
   constructor(private route: ActivatedRoute, private spotifyService:SpotifyService) { }
 
   ngOnInit() {
-    this.albumId = this.route.snapshot.paramMap.get("id");
+    this.albumId = this.route.snapshot.paramMap.get("id"); //dawg why do u throw an error
     this.spotifyService.getAlbum(this.albumId).then(album => {this.album = album});
     this.spotifyService.getTracksForAlbum(this.albumId).then(tracks => {this.tracks = tracks});
   }

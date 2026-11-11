@@ -18,6 +18,7 @@ export class SpotifyService {
   private sendRequestToExpress(endpoint:string):Promise<any> {
     //Specifically, update the URI according to the base URL for express and the endpoint.
     var uri:string = encodeURI(this.expressBaseUrl + endpoint);
+    //console.log(uri);
 
     //firstValueFrom generates a Promise for whatever is returned first from the GET request.
     //You shouldn't need to update this part.
@@ -39,10 +40,19 @@ export class SpotifyService {
     var uri:string = encodeURIComponent('/search/' + category + '/' + resource);
     var returnedData:ResourceData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      return returnedData.concat(data);
+      if (category == "artist") {
+        returnedData = data.artists.items.map((artist:any) => new ArtistData(artist));
+        return returnedData;
+      } else if (category == "album") {
+        returnedData = data.albums.items.map((album:any) => new AlbumData(album));
+        return returnedData;
+      } else if (category == "track") {
+        returnedData = data.tracks.items.map((track:any) => new TrackData(track));
+        return returnedData;
+      } else {
+        return [];
+      }
     });
-    //TODO: Depending on the category (artist, track, album), return an array of that type of data.
-    //JavaScript's "map" function might be useful for this, but there are other ways of building the array.
   }
 
   getArtist(artistId:string):Promise<ArtistData> {
@@ -56,7 +66,8 @@ export class SpotifyService {
     var uri:string = encodeURIComponent("/artist-top-tracks/" + artistId);
     var dataArray:TrackData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      return dataArray.concat(data);
+      dataArray = data.items.map((track:any) => new TrackData(track));
+      return dataArray;
     });
   }
 
@@ -64,7 +75,8 @@ export class SpotifyService {
     var uri:string = encodeURIComponent("/artist-albums/" + artistId);
     var albums:AlbumData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      return albums.concat(data);
+      albums = data.items.map((album:any) => new AlbumData(album));
+      return albums;
     });
   }
 
@@ -79,7 +91,8 @@ export class SpotifyService {
     var uri:string = encodeURIComponent("/album-tracks/" + albumId);
     var album_tracks:TrackData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      return album_tracks.concat(data);
+      album_tracks = data.items.map((track:any) => new TrackData(track));
+      return album_tracks;
     });
   }
 

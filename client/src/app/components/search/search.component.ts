@@ -13,10 +13,11 @@ import { ResourceData } from '../../data/resource-data';
     standalone: false
 })
 export class SearchComponent implements OnInit {
-  searchString:string;
+  //again am i supposed to change this bc it seriously throws errors if i don't
+  searchString:string = "";
   searchCategory:string = 'artist';
   searchCategories:string[] = ['artist', 'album', 'track'];
-  resources:ResourceData[];
+  resources:ResourceData[] = [];
 
   constructor(private spotifyService:SpotifyService) { }
 

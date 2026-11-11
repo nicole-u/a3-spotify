@@ -12,10 +12,11 @@ import { SpotifyService } from 'src/app/services/spotify.service';
     standalone: false
 })
 export class ArtistPageComponent implements OnInit {
-	artistId:string;
-	artist:ArtistData;
-	topTracks:TrackData[];
-	albums:AlbumData[];
+  //am i supposed to change this bc it throws errors if i don't
+	artistId:string = "";
+	artist:ArtistData = new ArtistData("");
+	topTracks:TrackData[] = [];
+	albums:AlbumData[] = [];
 
   constructor(private route: ActivatedRoute, private spotifyService: SpotifyService) { }
 
