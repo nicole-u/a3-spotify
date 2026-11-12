@@ -37,67 +37,60 @@ export class SpotifyService {
   }
 
   searchFor(category:string, resource:string):Promise<ResourceData[]> {
-    var uri:string = encodeURIComponent('/search/' + category + '/' + resource);
-    var returnedData:ResourceData[] = [];
+    var uri:string = '/search/' + category + '/' + encodeURIComponent(resource);
+    //var returnedData:ResourceData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      if (category == "artist") {
-        returnedData = data.artists.items.map((artist:any) => new ArtistData(artist));
-        return returnedData;
-      } else if (category == "album") {
-        returnedData = data.albums.items.map((album:any) => new AlbumData(album));
-        return returnedData;
-      } else if (category == "track") {
-        returnedData = data.tracks.items.map((track:any) => new TrackData(track));
-        return returnedData;
+      //console.log(data);
+      if (category === "artist") {
+        return data.artists.items.map((artist:any) => new ArtistData(artist));
+      } else if (category === "album") {
+        return data.albums.items.map((album:any) => new AlbumData(album));
+      } else if (category === "track") {
+        return data.tracks.items.map((track:any) => new TrackData(track));
       } else {
         return [];
       }
-    });
+    })
   }
 
   getArtist(artistId:string):Promise<ArtistData> {
-    var uri:string = encodeURIComponent("/artist/" + artistId);
-    return this.sendRequestToExpress(uri).then((data) => {
-      return new ArtistData(data);
-    });
+    var uri:string = "/artist/" + encodeURIComponent(artistId);
+    return this.sendRequestToExpress(uri).then((data) => new ArtistData(data));
   }
 
   getTopTracksForArtist(artistId:string):Promise<TrackData[]> {
-    var uri:string = encodeURIComponent("/artist-top-tracks/" + artistId);
-    var dataArray:TrackData[] = [];
+    var uri:string = "/artist-top-tracks/" + encodeURIComponent(artistId);
+    //var dataArray:TrackData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      dataArray = data.items.map((track:any) => new TrackData(track));
-      return dataArray;
+      return data.items.map((track:any) => new TrackData(track));
     });
   }
 
   getAlbumsForArtist(artistId:string):Promise<AlbumData[]> {
-    var uri:string = encodeURIComponent("/artist-albums/" + artistId);
-    var albums:AlbumData[] = [];
+    var uri:string = "/artist-albums/" + encodeURIComponent(artistId);
+    //var albums:AlbumData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      albums = data.items.map((album:any) => new AlbumData(album));
-      return albums;
+      return data.items.map((album:any) => new AlbumData(album));
     });
   }
 
   getAlbum(albumId:string):Promise<AlbumData> {
-    var uri:string = encodeURIComponent("/album/" + albumId);
+    var uri:string = "/album/" + encodeURIComponent(albumId);
     return this.sendRequestToExpress(uri).then((data) => {
       return new AlbumData(data);
     });
   }
 
   getTracksForAlbum(albumId:string):Promise<TrackData[]> {
-    var uri:string = encodeURIComponent("/album-tracks/" + albumId);
-    var album_tracks:TrackData[] = [];
+    var uri:string = "/album-tracks/" + encodeURIComponent(albumId);
+    //var album_tracks:TrackData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      album_tracks = data.items.map((track:any) => new TrackData(track));
-      return album_tracks;
+      return data.items.map((track:any) => new TrackData(track));
     });
   }
 
   getTrack(trackId:string):Promise<TrackData> {
-    var uri:string = encodeURIComponent("/track/" + trackId);
+    var uri:string = "/track/" + encodeURIComponent(trackId);
     return this.sendRequestToExpress(uri).then((data) => {
       return new TrackData(data);
     });

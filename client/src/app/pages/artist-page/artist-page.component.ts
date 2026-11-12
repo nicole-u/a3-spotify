@@ -13,24 +13,24 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class ArtistPageComponent implements OnInit {
   //am i supposed to change this bc it throws errors if i don't
-	artistId:string = "";
-	artist:ArtistData = new ArtistData("");
-	topTracks:TrackData[] = [];
-	albums:AlbumData[] = [];
+	artistId:string;
+	artist:ArtistData;
+	topTracks:TrackData[];
+	albums:AlbumData[];
 
   constructor(private route: ActivatedRoute, private spotifyService: SpotifyService) { }
 
   ngOnInit() {
     this.artistId = this.route.snapshot.paramMap.get('id');
-    this.spotifyService.getArtist(this.artistId).then(artist => {
-      this.artist = artist;
+    this.spotifyService.getArtist(this.artistId).then((artist:ArtistData) => {
+      this.artist = new ArtistData(artist);
     });
 
-    this.spotifyService.getAlbumsForArtist(this.artistId).then(albums => {
+    this.spotifyService.getAlbumsForArtist(this.artistId).then((albums:AlbumData[]) => {
       this.albums = albums;
     });
 
-    this.spotifyService.getTopTracksForArtist(this.artistId).then(tracks => {
+    this.spotifyService.getTopTracksForArtist(this.artistId).then((tracks:TrackData[]) => {
       this.topTracks = tracks;
     });
   }

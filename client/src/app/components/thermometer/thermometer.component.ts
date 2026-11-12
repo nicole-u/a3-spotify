@@ -9,9 +9,9 @@ import { Popularity } from 'src/app/data/popularity';
 })
 export class ThermometerComponent implements OnInit {
   //TODO: define Input fields and bind them to the template.
-  @Input() percent:number = 0;
-  @Input() color:string = "";
-  @Input() popularity:string = "";
+  @Input() percent:number;
+  @Input() color:string;
+  @Input() popularity:string;
 
   constructor() { }
 

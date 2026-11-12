@@ -19,7 +19,7 @@ export class TrackPageComponent implements OnInit {
 
   ngOnInit() {
   	this.trackId = this.route.snapshot.paramMap.get('id');
-    this.spotifyService.getTrack(this.trackId).then(track => this.track = track);
+    this.spotifyService.getTrack(this.trackId).then((track:TrackData) => {this.track = track});
   }
 
 }

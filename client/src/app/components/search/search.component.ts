@@ -14,10 +14,10 @@ import { ResourceData } from '../../data/resource-data';
 })
 export class SearchComponent implements OnInit {
   //again am i supposed to change this bc it seriously throws errors if i don't
-  searchString:string = "";
-  searchCategory:string = 'artist';
+  searchString:string;
+  searchCategory:string;
   searchCategories:string[] = ['artist', 'album', 'track'];
-  resources:ResourceData[] = [];
+  resources:ResourceData[];
 
   constructor(private spotifyService:SpotifyService) { }
 
@@ -25,10 +25,10 @@ export class SearchComponent implements OnInit {
   }
 
   search() {
-    var trimmed = this.searchString.trim();
-    if (this.searchString) {
-      this.spotifyService.searchFor(this.searchCategory, trimmed).then(data => this.resources = data);
-    }
+    this.spotifyService.searchFor(this.searchCategory, this.searchString).then((data) => {
+        this.resources = data;
+        console.log(this.resources);
+      });
   }
 
 }

@@ -3,8 +3,8 @@
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
 */10
-- */1 Communicating with the webserver
-- */1 Populating information about the user
+- 1/1 Communicating with the webserver
+- 1/1 Populating information about the user
 - */3 Populating the search component
 - */3 Artist page
 - */1.5 Album page
@@ -20,15 +20,15 @@ https://angular.dev/api/core/@for
 https://angular.dev/api/core/@if
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 https://www.w3schools.com/tags/att_option_selected.asp
+the entire angular dev tools
 
 
 4. What classmates or other individuals did you consult as part of this assignment? What did you discuss?
-
+none
 
 
 5. Did you add a bonus feature to your submission? If so, what is it and how should we see it?
-
+nope
 
 
 6. Is there anything special we need to know in order to run your code?
-
