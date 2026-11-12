@@ -62,7 +62,7 @@ export class SpotifyService {
     var uri:string = "/artist-top-tracks/" + encodeURIComponent(artistId);
     //var dataArray:TrackData[] = [];
     return this.sendRequestToExpress(uri).then((data) => {
-      return data.items.map((track:any) => new TrackData(track));
+      return data.tracks.map((track:any) => new TrackData(track));
     });
   }
 
