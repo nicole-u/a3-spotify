@@ -18,11 +18,11 @@ export class CarouselCardComponent implements OnInit {
 
   getResources() {
     if (this.resource.category == "artist") {
-      return encodeURIComponent("/artist/" + this.resource.id);
+      return "/artist/" + encodeURIComponent(this.resource.id);
     } else if (this.resource.category == "album") {
-      return encodeURIComponent("/album/" + this.resource.id);
+      return "/album/" + encodeURIComponent(this.resource.id);
     } else if (this.resource.category == "track") {
-      return encodeURIComponent("/track/" + this.resource.id);
+      return "/track/" + encodeURIComponent(this.resource.id);
     } else {
       return "#";
     }

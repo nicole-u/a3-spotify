@@ -3,12 +3,12 @@
 		<div class="col-sm-6 col-12">
 			<h1>{{track.name}}</h1>
 			<p>
-				Track on <a [routerLink] = "['/album' + track.album.id]">{{track.album.name}}</a>
+				Track on <a [routerLink]="['/album' + track.album.id]">{{track.album.name}}</a>
 			</p>
 			<div>
 				@for (artist of track.artists; track artist) {
 				<p>
-					Artist: <a [routerLink] = "['/artist' + track.artists[0].id]">{{artist.name}}</a>
+					Artist: <a [routerLink]="['/artist' + track.artists[0].id]">{{artist.name}}</a>
 				</p>
 				}
 			</div>
@@ -20,7 +20,7 @@
 			</p>
 		</div>
 		<div class="col-sm-6 col-12">
-			<app-thermometer [popularity] = "track.popularity.percentageString" [percent] = "track.popularity.percent * 100" [color] = "track.popularity.color"></app-thermometer>
+			<app-thermometer [popularity]="track.popularity.percentageString" [percent]="track.popularity.percent * 100" [color]="track.popularity.color"></app-thermometer>
 		</div>
 	}
 </div>

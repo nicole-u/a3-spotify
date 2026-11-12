@@ -18,18 +18,18 @@
 				<tr>
 					<td>{{i + 1}}</td>
 					<td>
-						<a [href] = "['/track/', track.id]">{{track.name}}</a>
+						<a [routerLink]="['/track/' + track.id]">{{track.name}}</a>
 					</td>
 					<td>{{track.durationStr}}</td>
 					<!--index == 0-->
 					@if (!hideArtist) {
 						<td>
-							<a [href] = "['/artist/', track.artists[0].id]">{{track.artists[0].name}}</a>
+							<a [routerLink]="['/artist/' + track.artists[0].id]">{{track.artists[0].name}}</a>
 						</td>
 					}
 					@if (!hideAlbum) {
 						<td>
-							<a [href] = "['/album/', track.album.id]">{{track.album.name}}</a>
+							<a [routerLink]="['/album/' + track.album.id]">{{track.album.name}}</a>
 						</td>
 					}
 				</tr>

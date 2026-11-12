@@ -3,15 +3,15 @@
 
 <select [(ngModel)] = "searchCategory">
 	@for (category of searchCategories; track category) {
-		<option [value] = "category" [class.selected] = "category === searchCategory">{{category}}</option>
+		<option [value]="category" [class.selected]="category === searchCategory">{{category}}</option>
 	}
 </select>
 
 <button class="btn btn-light" (click)="search()">Search</button>
 
 @if (searchCategory === "artist" || searchCategory === "album") {
-	<app-carousel class="col-12 col-sm-6" [resources] = "resources" [carouselId] = "133"></app-carousel>
+	<app-carousel class="col-12 col-sm-6" [resources]="resources" [carouselId]="133"></app-carousel>
 } 
 @else {
-	<app-track-list [tracks] = "resources"></app-track-list>
+	<app-track-list [tracks]="resources"></app-track-list>
 }

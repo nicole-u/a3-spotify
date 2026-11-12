@@ -10,13 +10,13 @@
 		<div class="col-xl-4 col-12">
 			<h3>Popularity</h3>
 			<p>{{artist.followers.toLocaleString("en")}} followers</p>
-			<app-thermometer [popularity]="artist.popularity" [percent] = "artist.popularity.percent * 100" [color] = "artist.popularity.color"></app-thermometer>
+			<app-thermometer [popularity]="artist.popularity" [percent]="artist.popularity.percent * 100" [color]="artist.popularity.color"></app-thermometer>
 			<h3>{{artist.name}}'s Albums</h3>
-			<app-carousel [resources] = "albums" [carouselId] = "'133'"></app-carousel>
+			<app-carousel [resources]="albums" [carouselId]="133"></app-carousel>
 		</div>
 		<div class="col-xl-4 col-12">
 			<h3>{{artist.name}}'s Top Tracks</h3>
-			<app-track-list [tracks] = "topTracks"></app-track-list>
+			<app-track-list [tracks]="topTracks"></app-track-list>
 		</div>
 	</div>
 }
